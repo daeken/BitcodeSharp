@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BitcodeSharp", "BitcodeSharp\BitcodeSharp.csproj", "{90AA8254-9DF0-4C6E-8FD7-AC984FE06EE9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BcRead", "BcRead\BcRead.csproj", "{0F6D7749-0E7C-4A55-BFFC-067AE02C783F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{90AA8254-9DF0-4C6E-8FD7-AC984FE06EE9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{90AA8254-9DF0-4C6E-8FD7-AC984FE06EE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{90AA8254-9DF0-4C6E-8FD7-AC984FE06EE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{90AA8254-9DF0-4C6E-8FD7-AC984FE06EE9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0F6D7749-0E7C-4A55-BFFC-067AE02C783F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0F6D7749-0E7C-4A55-BFFC-067AE02C783F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0F6D7749-0E7C-4A55-BFFC-067AE02C783F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0F6D7749-0E7C-4A55-BFFC-067AE02C783F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
