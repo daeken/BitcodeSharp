@@ -30,6 +30,8 @@ namespace BitcodeSharp {
 		public readonly uint Version, VstOffset;
 		public readonly string Triple, DataLayout, SourceFilename;
 		public readonly List<FunctionRecord> FunctionRecords = new List<FunctionRecord>();
+
+		public bool UseRelativeIDs => Version >= 1;
 		
 		public ModuleBlock(Block rb) {
 			Debug.Assert(rb.BlockId == BlockCode.Module);
@@ -77,7 +79,7 @@ namespace BitcodeSharp {
 						Constants = new ConstantsBlock(child);
 						break;
 					case BlockCode.Function:
-						Functions.Add(new FunctionBlock(child));
+						Functions.Add(new FunctionBlock(this, FunctionRecords[Functions.Count], child));
 						break;
 					case BlockCode.ValueSymtab:
 						Debug.Assert(ValueSymtab == null);
