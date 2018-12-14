@@ -10,7 +10,7 @@ namespace BitcodeSharp {
 		public readonly BlockCode BlockId;
 		internal readonly Dictionary<uint, List<(string, uint)>> Abbrevs = new Dictionary<uint, List<(string, uint)>>();
 		public readonly List<Block> Children = new List<Block>();
-		public readonly List<List<uint>> Records = new List<List<uint>>();
+		public readonly List<(uint Code, List<uint> Data)> Records = new List<(uint, List<uint>)>();
 
 		public Block(uint abbrLen, uint blockId) {
 			AbbrLen = abbrLen;
@@ -104,13 +104,14 @@ namespace BitcodeSharp {
 				}
 				case 3: { // UNABBREV_RECORD
 					//"UNABBREV_RECORD".Print();
-					var data = new List<uint> { BS.Vbr(6) };
+					var code = BS.Vbr(6);
+					var data = new List<uint>();
 					var numOps = BS.Vbr(6);
 					for(var i = 0; i < numOps; ++i)
 						data.Add(BS.Vbr(6));
-					Cur.Records.Add(data);
-					if(InBlockInfo && data[0] == 1) // SETBID
-						BlockInfoNum = data[1];
+					Cur.Records.Add((code, data));
+					if(InBlockInfo && code == 1) // SETBID
+						BlockInfoNum = data[0];
 					break;
 				}
 				case uint abbr when Cur.Abbrevs.ContainsKey(abbr): {
@@ -155,7 +156,7 @@ namespace BitcodeSharp {
 							case string type: throw new NotSupportedException($"Unknown type in abbrev {type}");
 						}
 					}
-					Cur.Records.Add(data);
+					Cur.Records.Add((data[0], data.Skip(1).ToList()));
 					break;
 				}
 				case uint abbr:
